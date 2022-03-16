@@ -45,6 +45,74 @@ const searchValue = document.querySelector(".search-bar");
 const todayWeatherElem = document.querySelector("#today-weather");
 const weatherForecastElem = document.querySelector("#weather-forecast");
 
+// Initialize slick carousel for display forecast weather
+const slickConfig = {
+  autoplay: true,
+  autoplaySpeed: 3000,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  arrows: true,
+  responsive: [
+    {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 4,
+      },
+    },
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 4,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 500,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 300,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
+};
+function slickCarousel() {
+  $("#weather-forecast").slick(slickConfig);
+  $(".slick-prev").html('<i class="fa fa-angle-left"></i>');
+  $(".slick-next").html('<i class="fa fa-angle-right"></i>');
+  $(window).resize(function () {
+    $(".slick-prev").html('<i class="fa fa-angle-left"></i>');
+    $(".slick-next").html('<i class="fa fa-angle-right"></i>');
+  });
+}
+function slickCarouselInit(otherDayForcast) {
+  if ($("#weather-forecast").hasClass("slick-initialized")) {
+    $("#weather-forecast").slick("unslick");
+    weatherForecastElem.innerHTML = otherDayForcast;
+    slickCarousel();
+  } else {
+    weatherForecastElem.innerHTML = otherDayForcast;
+    slickCarousel();
+  }
+}
+
 // Initialize AOS library
 AOS.init({
   easing: "slide",
@@ -135,7 +203,7 @@ const weather = {
             `;
       } else {
         otherDayForcast += `
-          <div data-aos="flip-left" data-aos-delay="${AOSDelay}" class="forecast-${idx}">
+          <div data-aos="flip-left" data-aos-delay="${AOSDelay}">
             <div class="weather-forecast-item" >
                 <div class="day">${window
                   .moment(day.dt * 1000)
@@ -152,7 +220,7 @@ const weather = {
       }
     });
     timezoneElem.innerText = data.timezone;
-    weatherForecastElem.innerHTML = otherDayForcast;
+    slickCarouselInit(otherDayForcast);
   },
   // Search weather of city
   search: function () {

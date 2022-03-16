@@ -268,6 +268,7 @@ body {
 .future-forecast .weather-forecast {
   display: flex;
   margin-top: 20px;
+  width: 100%;
 }
 
 .weather-forecast .weather-forecast-item {
@@ -300,36 +301,53 @@ body {
   font-size: 13px;
 }
 
+.slick-list {
+  padding: 7px 10px;
+}
+
+.slick-prev,
+.slick-next {
+  position: absolute;
+  top: 35%;
+  background-color: transparent;
+  outline: none;
+  opacity: 0.6;
+  transition: all 0.5s ease 0s;
+  width: 50px;
+  height: 50px;
+  z-index: 1;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  opacity: 1;
+}
+
+.slick-prev i,
+.slick-next i {
+  font-size: 30px;
+  color: white;
+}
+
+.slick-prev {
+  left: 15px;
+}
+
+.slick-next {
+  right: 15px;
+}
+
 @media screen and (min-width: 1400px) {
-  .forecast-7 {
-    display: none !important;
-  }
 }
 
 @media screen and (max-width: 1400px) {
-  .forecast-7,
-  .forecast-6 {
-    display: none !important;
-  }
 }
 @media screen and (max-width: 1200px) {
-  .forecast-7,
-  .forecast-6,
-  .forecast-5 {
-    display: none !important;
-  }
 }
 
 @media screen and (max-width: 992px) and (min-width: 768px) {
   .container-fluid {
     padding: 150px 0px 150px 20px;
-  }
-
-  .forecast-7,
-  .forecast-6,
-  .forecast-5,
-  .forecast-4 {
-    display: none !important;
   }
 }
 
@@ -423,21 +441,9 @@ body {
   .future-forecast .today {
     margin: 25px 0px;
   }
-
-  .forecast-7,
-  .forecast-6,
-  .forecast-5 {
-    display: none !important;
-  }
 }
 
 @media screen and (max-width: 576px) {
-  .forecast-7,
-  .forecast-6,
-  .forecast-5,
-  .forecast-4 {
-    display: none !important;
-  }
 }
 
 @media screen and (max-width: 500px) {
@@ -448,14 +454,6 @@ body {
   .future-forecast .today img {
     width: 100px;
     height: 100px;
-  }
-
-  .forecast-7,
-  .forecast-6,
-  .forecast-5,
-  .forecast-4,
-  .forecast-3 {
-    display: none !important;
   }
 }
 
@@ -555,14 +553,5 @@ body {
   .future-forecast .today .temp,
   .future-forecast .today .sun {
     font-size: 15px;
-  }
-
-  .forecast-7,
-  .forecast-6,
-  .forecast-5,
-  .forecast-4,
-  .forecast-3,
-  .forecast-2 {
-    display: none !important;
   }
 }
