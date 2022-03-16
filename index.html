@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.3/themes/yellow/pace-theme-loading-bar.min.css"
+      integrity="sha512-uRSw1Z+B/cbanYQReuOCkXVX+flbUnZjcD+AsMb+dIX+PkR1D4SFTlWW4CT6yr4B8pOzrzPLuDWK0toIlxF4VQ=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 current-info">
+          <div class="date-container">
+            <div class="time" id="time">12:30 <span id="am-pm">PM</span></div>
+            <div class="date" id="date">Monday, 25 May</div>
+          </div>
+          <div data-aos="zoom-in">
+            <div class="card">
+              <div class="search">
+                <input type="text" class="search-bar" placeholder="Search" />
+                <button>
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 1024 1024"
+                    height="1.25em"
+                    width="1.25em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="weather loading">
+                <h2 class="city">Hanoi</h2>
+                <h3 class="temp">51°C</h3>
+                <div class="flex">
+                  <img
+                    src="https://openweathermap.org/img/wn/04n.png"
+                    alt=""
+                    class="icon"
+                  />
+                  <div class="description">Cloudy</div>
+                </div>
+                <div class="real-feel">RealFeel®: 24°C</div>
+                <div class="humidity">Humidity: 60%</div>
+                <div class="pressure">Pressure: 1007 mbar</div>
+                <div class="wind">Wind speed: 6.2 km/h</div>
+              </div>
+            </div>
+          </div>
+          <div class="place-container">
+            <div class="timezone" id="timezone">VN</div>
+            <div id="lat-lon" class="lat-lon">NE</div>
+          </div>
+        </div>
+        <div
+          class="col-xl-8 col-lg-8 col-md-7 col-sm-12 future-forecast"
+          data-aos="fade-left"
+        >
+          <h2 class="title">Forecast</h2>
+          <div data-aos="zoom-in" data-aos-delay="600">
+            <div class="today" id="today-weather">
+              <img
+                src="http://openweathermap.org/img/wn/10d@2x.png"
+                alt="weather icon"
+                class="w-icon"
+              />
+              <div class="other">
+                <div class="day">Monday</div>
+                <div class="temp">Day - 35.6&#176; C</div>
+                <div class="temp">Night - 25.6&#176; C</div>
+                <div class="sun">Sunrise - 06:04 am</div>
+                <div class="sun">Sunset - 18:06 pm</div>
+              </div>
+            </div>
+          </div>
+          <div class="weather-forecast" id="weather-forecast">
+            <div
+              class="weather-forecast-item forecast-1"
+              data-aos-delay="700"
+              data-aos="flip-left"
+            >
+              <div class="day">Tue</div>
+              <img
+                src="http://openweathermap.org/img/wn/10d@2x.png"
+                alt="weather icon"
+                class="w-icon"
+              />
+              <div class="temp">Day - 35.6&#176; C</div>
+              <div class="temp">Night - 25.6&#176; C</div>
+            </div>
+            <div
+              class="weather-forecast-item forecast-2"
+              data-aos-delay="900"
+              data-aos="flip-left"
+            >
+              <div class="day">Wed</div>
+              <img
+                src="http://openweathermap.org/img/wn/10d@2x.png"
+                alt="weather icon"
+                class="w-icon"
+              />
+              <div class="temp">Day - 35.6&#176; C</div>
+              <div class="temp">Night - 25.6&#176; C</div>
+            </div>
+            <div
+              class="weather-forecast-item forecast-3"
+              data-aos-delay="1100"
+              data-aos="flip-left"
+            >
+              <div class="day">Thu</div>
+              <img
+                src="http://openweathermap.org/img/wn/10d@2x.png"
+                alt="weather icon"
+                class="w-icon"
+              />
+              <div class="temp">Day - 35.6&#176; C</div>
+              <div class="temp">Night - 25.6&#176; C</div>
+            </div>
+            <div
+              class="weather-forecast-item forecast-4"
+              data-aos-delay="1300"
+              data-aos="flip-left"
+            >
+              <div class="day">Fri</div>
+              <img
+                src="http://openweathermap.org/img/wn/10d@2x.png"
+                alt="weather icon"
+                class="w-icon"
+              />
+              <div class="temp">Day - 35.6&#176; C</div>
+              <div class="temp">Night - 25.6&#176; C</div>
+            </div>
+            <div
+              class="weather-forecast-item forecast-5"
+              data-aos-delay="1500"
+              data-aos="flip-left"
+            >
+              <div class="day">Sat</div>
+              <img
+                src="http://openweathermap.org/img/wn/10d@2x.png"
+                alt="weather icon"
+                class="w-icon"
+              />
+              <div class="temp">Day - 35.6&#176; C</div>
+              <div class="temp">Night - 25.6&#176; C</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./script.js" defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+      integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      data-pace-options='{ "ajax": false,"document":true,"eventLag":false }'
+      src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.3/pace.min.js"
+      integrity="sha512-TJX3dl0dqF2pUpKKtV60kECO4y8blw4ZPIZNEkfUnFepRKfx4nfiI37IqFa1TEsRQJkPGTIK4BBJ2k/lmsK7HA=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  </body>
+</html>
