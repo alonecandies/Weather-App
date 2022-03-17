@@ -47,8 +47,6 @@ const weatherForecastElem = document.querySelector("#weather-forecast");
 
 // Initialize slick carousel for display forecast weather
 const slickConfig = {
-  autoplay: true,
-  autoplaySpeed: 3000,
   infinite: false,
   speed: 300,
   slidesToShow: 5,
